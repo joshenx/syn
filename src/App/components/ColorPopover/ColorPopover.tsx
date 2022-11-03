@@ -19,7 +19,7 @@ import {
   useDisclosure,
   CloseButton
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ChromePicker } from 'react-color'
 //import { ColorPicker } from './ColorPicker/ColorPicker'
 import './style.css'
@@ -28,6 +28,7 @@ import { supabase } from '../supabaseClient'
 
 export const ColorPopover = (props: any) => {
   const [color, setColor] = useState('#ffffff'); // define a state for the color prop
+  const [currTime, setCurrTime] = useState<string | undefined>('');
   const {isOpen: showAlert, onClose: closeAlert, onOpen: openAlert} = useDisclosure({ defaultIsOpen: false })
   const {isOpen: showSuccess, onClose: closeSuccess, onOpen: openSuccess} = useDisclosure({ defaultIsOpen: false })
 
@@ -40,7 +41,11 @@ export const ColorPopover = (props: any) => {
     console.log({color});
     const { data, error } = await supabase
       .from('hexcodes')
-      .upsert({ user_id: 1, song_id: props.songId, hex_code: color, timestamp: "00:15"})
+      .upsert({
+        user_id: 1,
+        song_id: props.songId,
+        hex_code: color,
+        timestamp: currTime})
       .select()
     if (error) {
       console.log("Error")
@@ -51,6 +56,11 @@ export const ColorPopover = (props: any) => {
     }
   };
 
+  const updateTime = () => {
+    setCurrTime(document.getElementById("rhap_current-time")?.innerText);
+    console.log(`Time set to ${currTime}`)
+  }
+  
   return (
     <Popover>
     <PopoverTrigger>
@@ -62,16 +72,22 @@ export const ColorPopover = (props: any) => {
           justifyContent: "center",
           alignItems: "center",
         }}
-      
-        >
-          Syn Here</Button>
+        onClick={() => updateTime()}
+      >
+        Syn Here
+      </Button>
     </PopoverTrigger>
     <Portal>
       <PopoverContent>
         <PopoverArrow />
         <PopoverHeader
           alignSelf="center"
-        ><Heading size='lg'>New Syn</Heading></PopoverHeader>
+        >
+          <Heading size='lg'>
+            Syn @ {currTime}
+          </Heading>
+          {/* refresh button */}
+        </PopoverHeader>
         <PopoverCloseButton />
         <PopoverBody>
           <Grid
