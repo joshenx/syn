@@ -1,0 +1,23 @@
+.rhap_container {
+  box-shadow: none;
+  background-color: rgba(0,0,0,0);
+}
+
+#rhap_current-time {
+  color: var(--chakra-colors-chakra-body-text);
+}
+
+.rhap_progress-container {
+  margin: 0;
+}
+
+.rhap_progress-bar {
+  width: 100%;
+}
+
+.rhap_progress-filled {
+  background-color: var(--chakra-colors-brand-pink);
+}
+
+.rhap_progress-indicator {
+}
