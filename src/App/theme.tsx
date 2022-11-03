@@ -1,6 +1,12 @@
 import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
+  components: {
+    Button: {
+      baseStyle: {
+      }
+    }
+  },
   colors: {
     brand: {
       blue: "#26547C",

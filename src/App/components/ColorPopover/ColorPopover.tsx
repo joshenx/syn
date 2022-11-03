@@ -87,9 +87,14 @@ export const ColorPopover = (props: any) => {
           </Grid>
         </PopoverBody>
         <PopoverFooter alignSelf='center'>
-          <Button m="0rem 1rem" onClick={handleSubmit}>Submit</Button><br></br>
+          {(!showAlert && !showSuccess) && (
+            <Button m="0rem 1rem" onClick={handleSubmit}>Submit</Button>
+          )}
           {showAlert && (
-            <ScaleFade initialScale={0.9} in={showAlert}>
+            <ScaleFade
+              initialScale={0.9}
+              in={showAlert}
+            >
             <Alert
               borderRadius="10px"
               status='error'
@@ -108,7 +113,10 @@ export const ColorPopover = (props: any) => {
             </ScaleFade>
           )}
           {showSuccess && (
-            <ScaleFade initialScale={0.9} in={showSuccess}>
+            <ScaleFade
+              initialScale={0.9}
+              in={showSuccess}  
+            >
             <Alert
               borderRadius="10px"
               status='success'

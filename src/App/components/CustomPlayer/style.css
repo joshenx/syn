@@ -21,6 +21,8 @@
 
 .rhap_progress-indicator {
   background-color: white;
+  border-width: 2px;
+  border-color: #dcdcdc;
   border-radius: 6px;
   box-shadow: 0px 0px 30px 0px whitesmoke;
 }

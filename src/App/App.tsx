@@ -16,14 +16,7 @@ export const App = () => (
   <ChakraProvider theme={theme}>
     <Box fontSize="md">
       <NavBar />
-      <Grid
-        justifyContent="center"
-        minH="100vh"
-        p={3}
-      >
         <SongShowcase songId={1} />
-        
-      </Grid>
     </Box>
   </ChakraProvider>
 )
