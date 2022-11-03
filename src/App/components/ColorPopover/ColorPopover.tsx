@@ -1,6 +1,7 @@
 import * as React from "react"
 import {
   Grid,
+  ScaleFade,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -12,6 +13,12 @@ import {
   PopoverFooter,
   Portal,
   Heading,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  useDisclosure,
+  CloseButton
 } from "@chakra-ui/react"
 import { useState } from "react"
 import { ChromePicker } from 'react-color'
@@ -22,7 +29,9 @@ import { supabase } from '../supabaseClient'
 
 export const ColorPopover = (props: any) => {
   const [color, setColor] = useState('#ffffff'); // define a state for the color prop
-  
+  const {isOpen: showAlert, onClose: closeAlert, onOpen: openAlert} = useDisclosure({ defaultIsOpen: false })
+  const {isOpen: showSuccess, onClose: closeSuccess, onOpen: openSuccess} = useDisclosure({ defaultIsOpen: false })
+
   // setState when onChange event triggered
   const handleColorChange = (color: any) => {
     setColor(color.hex);
@@ -32,10 +41,14 @@ export const ColorPopover = (props: any) => {
     console.log({color});
     const { data, error } = await supabase
       .from('hexcodes')
-      .upsert({ poster_id: 1, song_id: 1, hex_code: {color}})
+      .upsert({ user_id: 1, song_id: 1, hex_code: {color}, timestamp: "00:15"})
       .select()
     if (error) {
-      console.log(error);
+      console.log("Error")
+      openAlert()
+      console.log({showAlert})
+    } else {
+      openSuccess();
     }
   };
 
@@ -52,7 +65,7 @@ export const ColorPopover = (props: any) => {
         }}
       
         >
-          {props.currTime} Syn Here</Button>
+          Syn Here</Button>
     </PopoverTrigger>
     <Portal>
       <PopoverContent>
@@ -74,7 +87,45 @@ export const ColorPopover = (props: any) => {
           </Grid>
         </PopoverBody>
         <PopoverFooter alignSelf='center'>
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button m="0rem 1rem" onClick={handleSubmit}>Submit</Button><br></br>
+          {showAlert && (
+            <ScaleFade initialScale={0.9} in={showAlert}>
+            <Alert
+              borderRadius="10px"
+              status='error'
+              variant='solid'
+            >
+            <AlertIcon />
+            <AlertDescription>Submission failed</AlertDescription>
+            <CloseButton
+              alignSelf='flex-start'
+              position='relative'
+              right={-1}
+              top={-1}
+              onClick={closeAlert}
+            />
+            </Alert>
+            </ScaleFade>
+          )}
+          {showSuccess && (
+            <ScaleFade initialScale={0.9} in={showSuccess}>
+            <Alert
+              borderRadius="10px"
+              status='success'
+              variant='solid'
+            >
+            <AlertIcon />
+            <AlertDescription>Submission success!</AlertDescription>
+            <CloseButton
+              alignSelf='flex-start'
+              position='relative'
+              right={-1}
+              top={-1}
+              onClick={closeSuccess}
+            />
+            </Alert>
+            </ScaleFade>
+          )}
         </PopoverFooter>
       </PopoverContent>
     </Portal>
