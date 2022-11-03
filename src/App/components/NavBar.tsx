@@ -18,11 +18,17 @@ import {
   useColorMode,
   Center,
 } from '@chakra-ui/react';
+import { Link as ReachLink } from "react-router-dom"
 import {HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 
-const Links = ['Gallery', 'Metronome', 'Charts', 'Who am I?'];
+const Links = {
+  'Gallery': '',
+  'Metronome': 'metronome',
+  'Charts': 'charts',
+  'Who am I?': 'about',
+};
 
-const NavLink = ({ children }: { children: ReactNode }) => (
+const NavLink = ({ children, link }: { children: ReactNode, link: string }) => (
   <Link
     px={2}
     py={1}
@@ -31,8 +37,8 @@ const NavLink = ({ children }: { children: ReactNode }) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    
-    href={'#'}>
+    as={ReachLink}
+    to={`/${link}`}>
     {children}
   </Link>
 );
@@ -57,8 +63,8 @@ export const NavBar = () => {
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {Object.entries(Links).map(([k, v]) => (
+                <NavLink key={k} link={v}>{k}</NavLink>
               ))}
             </HStack>
           </HStack>

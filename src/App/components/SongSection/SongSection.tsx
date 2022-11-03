@@ -11,12 +11,13 @@ import {
 
 import { ColorPopover } from "../ColorPopover/ColorPopover"
 import { CustomPlayer } from "../CustomPlayer/CustomPlayer"
+import { VoteDataDisplay } from "../VoteDataDisplay/VoteDataDisplay"
 import { SongInfo } from "../SongInfo/SongInfo"
 
 import { useEffect, useState } from "react"
 import { supabase } from '../supabaseClient'
 
-export const SongShowcase = (props:any) => {
+export const SongSection = (props:any) => {
   interface SongData {
     title: string;
     composer: string;
@@ -61,11 +62,11 @@ export const SongShowcase = (props:any) => {
         align="stretch"
         wrap="wrap"
       >
-        <Flex bg='brand.pink' direction="column" grow="2">
-          <Text>Color Profile</Text>
+        <Flex m="1rem" bg='brand.pink' direction="column" grow="2">
+          
         </Flex>
         <Spacer />
-        <Flex direction="column" grow="4">
+        <Flex m="1rem" direction="column" grow="4">
           <Box textAlign="left">
             <Heading>
               {song?.title}
@@ -82,13 +83,13 @@ export const SongShowcase = (props:any) => {
             align="stretch"
           >
             <CustomPlayer src={song?.url} />
-            <ColorPopover />
+            <ColorPopover songId={props.songId} />
           </VStack>
         </Flex>
         <Spacer />
-        <Flex direction="column" bg='brand.blue' grow="2">
+        <Flex m="1rem" direction="column" grow="2">
           <Box>
-            <Text>Vote Data</Text>
+            <VoteDataDisplay />
           </Box>
         </Flex>
         <SongInfo songData={song}/>

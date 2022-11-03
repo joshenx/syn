@@ -7,16 +7,20 @@ import {
   Grid,
 } from "@chakra-ui/react"
 import { NavBar } from "./components/NavBar"
-import { SongShowcase } from "./components/SongShowcase/SongShowcase"
+import { SwitchContainer } from "./SwitchContainer/SwitchContainer"
+import { SongSection } from "./components/SongSection/SongSection"
 import theme from "./theme"
+import { BrowserRouter } from 'react-router-dom'
 
 
 export const App = () => (
 
   <ChakraProvider theme={theme}>
-    <Box fontSize="md">
-      <NavBar />
-        <SongShowcase songId={1} />
-    </Box>
+    <BrowserRouter>
+      <Box fontSize="md">
+        <NavBar />
+        <SwitchContainer />
+      </Box>
+    </BrowserRouter>
   </ChakraProvider>
 )

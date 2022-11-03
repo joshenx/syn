@@ -15,7 +15,6 @@ import {
   Heading,
   Alert,
   AlertIcon,
-  AlertTitle,
   AlertDescription,
   useDisclosure,
   CloseButton
@@ -41,7 +40,7 @@ export const ColorPopover = (props: any) => {
     console.log({color});
     const { data, error } = await supabase
       .from('hexcodes')
-      .upsert({ user_id: 1, song_id: 1, hex_code: {color}, timestamp: "00:15"})
+      .upsert({ user_id: 1, song_id: props.songId, hex_code: color, timestamp: "00:15"})
       .select()
     if (error) {
       console.log("Error")
