@@ -29,7 +29,6 @@ export const SongSection = ({songId}: {songId:number}) => {
   const [data, setData] = useState<any[] | null>(null);
   const [song, setSong] = useState<SongData | null>(null);
   
-  
   const fetchColorsData = async () => {
     let { data, error, status } = await supabase
       .rpc('collect_votes_of', {
@@ -43,25 +42,25 @@ export const SongSection = ({songId}: {songId:number}) => {
     console.log("JSON FORMATTTED DATA:" + JSON.stringify(data))
     setData(data);
   }
+  
+  const fetchSong = async () => {
+    let { data, error, status } = await supabase
+      .from('songs')
+      .select('*')
+      .eq('song_id', songId)
+      .single();
 
-  useEffect(() => {
-    const fetchSong = async () => {
-      let { data, error, status } = await supabase
-        .from('songs')
-        .select('*')
-        .eq('song_id', songId)
-        .single();
-
-      if (error && status !== 406) {
-        console.error(error)
-      }
-
-      console.log(data)
-      setSong(data);
+    if (error && status !== 406) {
+      console.error(error)
     }
 
-    fetchSong();
+    console.log(`Song found with ID ${songId}:`)
+    setSong(data);
+  }
 
+  useEffect(() => {
+
+    fetchSong();
     fetchColorsData();
   }, [])
   

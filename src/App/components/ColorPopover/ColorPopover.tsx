@@ -25,7 +25,6 @@ import { useState } from "react"
 import { FiHelpCircle } from 'react-icons/fi'
 import { ChromePicker } from 'react-color'
 //import { ColorPicker } from './ColorPicker/ColorPicker'
-import './style.css'
 
 import { supabase } from '../supabaseClient'
 
@@ -89,6 +88,8 @@ export const ColorPopover = (props: any) => {
       <Button
         rightIcon={<FiHelpCircle />}
         onClick={() => updateTime()}
+        fontWeight="normal"
+        width="100%"
       >
         Syn Here
       </Button>

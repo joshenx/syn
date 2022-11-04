@@ -19,7 +19,7 @@ export const VoteDataDisplay = ({data}: {data:any[] | null}) => {
     <TableContainer
       overflowY="auto"
       maxHeight="230px"
-      p="1rem"
+      p="0rem 1rem"
       sx={{
         '&::-webkit-scrollbar': {
           width: '16px',
@@ -47,7 +47,7 @@ export const VoteDataDisplay = ({data}: {data:any[] | null}) => {
             ? <Tr><Td colSpan={3}><Text color="gray.400" fontSize="md">Be the first to vote!</Text></Td></Tr> 
             : data?.slice(0,MAX_NUM_TO_DISPLAY).map((row) => {
             return (
-              <Tr>
+              <Tr key={row.hex_code}>
                <Td>
                   <Button
                     borderRadius="10%"
