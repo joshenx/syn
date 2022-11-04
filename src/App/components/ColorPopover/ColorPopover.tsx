@@ -17,9 +17,12 @@ import {
   AlertIcon,
   AlertDescription,
   useDisclosure,
-  CloseButton
+  CloseButton,
+  Tooltip,
+  Box
 } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { FiHelpCircle } from 'react-icons/fi'
 import { ChromePicker } from 'react-color'
 //import { ColorPicker } from './ColorPicker/ColorPicker'
 import './style.css'
@@ -27,7 +30,7 @@ import './style.css'
 import { supabase } from '../supabaseClient'
 
 export const ColorPopover = (props: any) => {
-  const [color, setColor] = useState('#ffffff'); // define a state for the color prop
+  const [color, setColor] = useState('#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')); // define a state for the color prop
   const [currTime, setCurrTime] = useState<string | undefined>('');
   const {isOpen: showAlert, onClose: closeAlert, onOpen: openAlert} = useDisclosure({ defaultIsOpen: false })
   const {isOpen: showSuccess, onClose: closeSuccess, onOpen: openSuccess} = useDisclosure({ defaultIsOpen: false })
@@ -53,6 +56,7 @@ export const ColorPopover = (props: any) => {
       console.log({showAlert})
     } else {
       openSuccess();
+      props.dataUpdater();
     }
   };
 
@@ -63,20 +67,34 @@ export const ColorPopover = (props: any) => {
   
   return (
     <Popover>
+    <Tooltip
+      hasArrow
+      fontSize="sm"
+      textAlign="center"
+      label='Do you feel like a specific color fits the music at
+        this timestamp? Submit your vote (aka a Syn), and compare how
+        many people feel the same way as you!'
+      placement='bottom'
+    >
+    <Box 
+      style={{
+        display: "flex",
+        flexGrow: 1,
+        flexShrink: 0,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
     <PopoverTrigger>
       <Button
-        style={{
-          display: "flex",
-          flexGrow: 1,
-          flexShrink: 0,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+        rightIcon={<FiHelpCircle />}
         onClick={() => updateTime()}
       >
         Syn Here
       </Button>
     </PopoverTrigger>
+    </Box>
+    </Tooltip>
     <Portal>
       <PopoverContent>
         <PopoverArrow />
@@ -140,10 +158,10 @@ export const ColorPopover = (props: any) => {
             <AlertIcon />
             <AlertDescription>Submission success!</AlertDescription>
             <CloseButton
+              textAlign="center"
               alignSelf='flex-start'
               position='relative'
               right={-1}
-              top={-1}
               onClick={closeSuccess}
             />
             </Alert>

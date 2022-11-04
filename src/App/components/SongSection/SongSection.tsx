@@ -11,13 +11,14 @@ import {
 
 import { ColorPopover } from "../ColorPopover/ColorPopover"
 import { CustomPlayer } from "../CustomPlayer/CustomPlayer"
+import { SongGradientGenerator } from "../SongGradientGenerator/SongGradientGenerator"
 import { VoteDataDisplay } from "../VoteDataDisplay/VoteDataDisplay"
 import { SongInfo } from "../SongInfo/SongInfo"
 
 import { useEffect, useState } from "react"
 import { supabase } from '../supabaseClient'
 
-export const SongSection = (props:any) => {
+export const SongSection = ({songId}: {songId:number}) => {
   interface SongData {
     title: string;
     composer: string;
@@ -25,25 +26,43 @@ export const SongSection = (props:any) => {
     url: string;
   }
   
+  const [data, setData] = useState<any[] | null>(null);
   const [song, setSong] = useState<SongData | null>(null);
   
+  
+  const fetchColorsData = async () => {
+    let { data, error, status } = await supabase
+      .rpc('collect_votes_of', {
+        songid: songId
+      })
+
+    if (error && status !== 406) {
+      console.error(error)
+    }
+
+    console.log("JSON FORMATTTED DATA:" + JSON.stringify(data))
+    setData(data);
+  }
+
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchSong = async () => {
       let { data, error, status } = await supabase
         .from('songs')
         .select('*')
-        .eq('song_id', props.songId)
+        .eq('song_id', songId)
         .single();
 
       if (error && status !== 406) {
-        console.log(error)
+        console.error(error)
       }
 
       console.log(data)
       setSong(data);
     }
 
-    fetchData();
+    fetchSong();
+
+    fetchColorsData();
   }, [])
   
   return (
@@ -56,14 +75,14 @@ export const SongSection = (props:any) => {
     >
       <Flex
         pt="2rem"
-        paddingX="10vw"
+        paddingX="5vw"
         direction="row"
         justify="center"
         align="stretch"
         wrap="wrap"
       >
-        <Flex m="1rem" bg='brand.pink' direction="column" grow="2">
-          
+        <Flex m="1rem" direction="column" grow="2">
+          <SongGradientGenerator data={data} />
         </Flex>
         <Spacer />
         <Flex m="1rem" direction="column" grow="4">
@@ -83,13 +102,13 @@ export const SongSection = (props:any) => {
             align="stretch"
           >
             <CustomPlayer src={song?.url} />
-            <ColorPopover songId={props.songId} />
+            <ColorPopover dataUpdater={fetchColorsData} songId={songId} />
           </VStack>
         </Flex>
         <Spacer />
         <Flex m="1rem" direction="column" grow="2">
           <Box>
-            <VoteDataDisplay />
+            <VoteDataDisplay data={data} />
           </Box>
         </Flex>
         <SongInfo songData={song}/>

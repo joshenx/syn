@@ -9,7 +9,7 @@ import {
 export const SongInfo = (props:any) => {
   return (
     <Flex
-      mt="4rem"
+      mt="2rem"
       wrap="wrap"
       p="0 20%"
     >
