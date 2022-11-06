@@ -39,14 +39,22 @@ export const CustomPlayer = (
     console.log(`Initialising markers..`)
     const newMarkers = data?.map((row, id) => {
       return (
-      <Tooltip hasArrow placement='top-start' key={id} label={row.comment} fontSize='sm'>
+      <Tooltip
+        arrowSize={2}
+        hasArrow
+        placement='top-start'
+        key={id}
+        label={row.comment}
+        fontSize='sm'>
         <TriangleDownIcon
           color={row.hex_code}
           position="absolute"
           left={timestampToPercentage(row.timestamp, duration)}
           sx={{
             ":hover": {
-              transform: "scale(2)"
+              transform: "scale(2)",
+              zIndex: "2",
+              filter: `drop-shadow(0px 0px 3px ${row.hex_code})`
             },
             transition: "all cubic-bezier(.02,.62,.26,1) 0.5s"
           }}
@@ -78,11 +86,12 @@ export const CustomPlayer = (
   return (
     <VStack
       position='relative'
+      alignItems='left'
     >
       <Box
         position='relative'
         height="10px"
-        width="100%"
+        width="98%"
         >
         {markers?.map((component) => {return component})}
       </Box>
