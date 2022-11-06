@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react"
 import {
   Box,
@@ -26,7 +27,8 @@ export const SongSection = ({songId}: {songId:number}) => {
     url: string;
   }
   
-  const [data, setData] = useState<any[] | null>(null);
+  const [colorData, setColorData] = useState<any[] | null>(null);
+  const [hexData, setHexData] = useState<any[] | null>(null);
   const [song, setSong] = useState<SongData | null>(null);
   
   const fetchColorsData = async () => {
@@ -40,7 +42,21 @@ export const SongSection = ({songId}: {songId:number}) => {
     }
 
     console.log("JSON FORMATTTED DATA:" + JSON.stringify(data))
-    setData(data);
+    setColorData(data);
+  }
+
+  const fetchHexData = async () => {
+    let { data, error, status } = await supabase
+      .from('hexcodes')
+      .select('*')
+      .eq('song_id', songId)
+
+    if (error && status !== 406) {
+      console.error(error)
+    }
+
+    console.log(`Hexcodes found with ID ${songId}`)
+    setHexData(data);
   }
   
   const fetchSong = async () => {
@@ -54,14 +70,19 @@ export const SongSection = ({songId}: {songId:number}) => {
       console.error(error)
     }
 
-    console.log(`Song found with ID ${songId}:`)
+    console.log(`Song found with ID ${songId}`)
     setSong(data);
   }
 
-  useEffect(() => {
+  const refreshData = () => {
+    fetchColorsData();
+    fetchHexData();
+  }
 
+  useEffect(() => {
     fetchSong();
     fetchColorsData();
+    fetchHexData();
   }, [])
   
   return (
@@ -81,7 +102,7 @@ export const SongSection = ({songId}: {songId:number}) => {
         wrap="wrap"
       >
         <Flex m="1rem" direction="column" grow="2">
-          <SongGradientGenerator data={data} />
+          <SongGradientGenerator data={colorData} />
         </Flex>
         <Spacer />
         <Flex m="1rem" direction="column" grow="4">
@@ -100,14 +121,14 @@ export const SongSection = ({songId}: {songId:number}) => {
             spacing={2}
             align="stretch"
           >
-            <CustomPlayer src={song?.url} />
-            <ColorPopover dataUpdater={fetchColorsData} songId={songId} />
+            {hexData && <CustomPlayer data={hexData} src={song?.url} />}
+            <ColorPopover dataUpdater={refreshData} songId={songId} />
           </VStack>
         </Flex>
         <Spacer />
         <Flex m="1rem" direction="column" grow="2">
           <Box>
-            <VoteDataDisplay data={data} />
+            <VoteDataDisplay data={colorData} />
           </Box>
         </Flex>
         <SongInfo songData={song}/>

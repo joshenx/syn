@@ -1,9 +1,18 @@
 .rhap_container {
   box-shadow: none;
   background-color: rgba(0,0,0,0);
+  padding: 0px;
+}
+
+.rhap_controls-section {
+  justify-content: space-evenly;
 }
 
 #rhap_current-time {
+  color: var(--chakra-colors-chakra-body-text);
+}
+
+.rhap_total-time {
   color: var(--chakra-colors-chakra-body-text);
 }
 

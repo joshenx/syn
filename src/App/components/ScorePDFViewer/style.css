@@ -1,0 +1,9 @@
+.react-pdf__Page__canvas {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.react-pdf__Page.prevPage {
+  position: absolute !important;
+  z-index: 1;
+}
