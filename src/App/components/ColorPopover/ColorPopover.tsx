@@ -1,5 +1,4 @@
 import {
-  Grid,
   ScaleFade,
   Popover,
   PopoverTrigger,
@@ -19,17 +18,21 @@ import {
   CloseButton,
   Tooltip,
   Box,
-  Input
+  Textarea,
+  Text,
+  Flex,
+  VStack
 } from "@chakra-ui/react"
-import { useState } from "react"
+import React, { useState } from "react"
 import { FiHelpCircle } from 'react-icons/fi'
-import { ChromePicker, SliderPicker } from 'react-color'
+import { ChromePicker } from 'react-color'
 import { styles } from './customStyle.js'
 
 import { supabase } from '../supabaseClient'
 
 export const ColorPopover = (props: any) => {
   const [color, setColor] = useState('#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')); // define a state for the color prop
+  const [comment, setComment] = useState('')
   const [currTime, setCurrTime] = useState<string | undefined>('');
   const {isOpen: showAlert, onClose: closeAlert, onOpen: openAlert} = useDisclosure({ defaultIsOpen: false })
   const {isOpen: showSuccess, onClose: closeSuccess, onOpen: openSuccess} = useDisclosure({ defaultIsOpen: false })
@@ -48,7 +51,8 @@ export const ColorPopover = (props: any) => {
         user_id: 1,
         song_id: props.songId,
         hex_code: color,
-        timestamp: currTime})
+        timestamp: currTime,
+        comment: comment})
       .select()
     if (error) {
       console.log("Error")
@@ -65,6 +69,11 @@ export const ColorPopover = (props: any) => {
     console.log(`Time set to ${currTime}`)
   }
   
+  const handleCommentChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
+    let inputValue = e.target.value;
+    setComment(inputValue);
+  }
+
   return (
     <Popover>
     <Tooltip
@@ -98,39 +107,87 @@ export const ColorPopover = (props: any) => {
     </Box>
     </Tooltip>
     <Portal>
-      <PopoverContent>
+      <PopoverContent w={{base: "80vw", md: "500px"}}>
         <PopoverArrow />
         <PopoverHeader
           alignSelf="center"
         >
-          <Heading size='lg'>
-            Syn @ {currTime}
+          <Heading size='md'>
+            NEW SYN
           </Heading>
         </PopoverHeader>
         <PopoverCloseButton />
         <PopoverBody>
-          <Grid
-            alignItems="center"
-            justifyContent="center"
+          <Flex
+            gap={2}
+            direction={{
+              base: "column", md: "row"
+            }}
+            alignItems="stretch"
           >
+            <Box flexGrow="2" mt="1rem">
             <ChromePicker
               styles={styles}
               color={color}
               onChange={handleColorChange}
               disableAlpha={true}
             />
+            </Box>
             {/* <SliderPicker
               styles={styles}
               color={color}
               onChange={handleColorChange}
             /> */}
-            <Input variant='filled' placeholder='Filled' />
-          </Grid>
+
+            {/* FORM INFO */}
+            <Flex
+              direction={{
+                base: "row-reverse", md: "column"
+              }}
+            >
+            <VStack flexGrow="1"
+              px="0rem"
+              alignItems={{ base: "left" }}>
+            <Text>
+              I hear...
+            </Text>
+            <Heading
+              color={color}
+              textShadow="1px 1px 10px rgba(0,0,0,0.1)"
+              size='lg'>
+              {color.toUpperCase()}
+            </Heading>
+            <Text>
+              at
+            </Text>
+            <Heading size='lg'>
+              {currTime}
+            </Heading>
+            </VStack>
+            <VStack flexGrow="1"
+              px={{ base: "2rem", md: "0rem" }}
+              alignItems={{ base: "left" }}>
+            <Textarea
+              value={comment}
+              onChange={handleCommentChange}
+              variant='filled'
+              _focus={{
+                borderColor: color,
+                borderRadius: '5px'
+              }}
+              mt="0.5rem"
+              resize="none"
+              size='xs'
+              placeholder='Type your comment here!' />
+            {(!showAlert && !showSuccess) && (
+              <Button fontWeight="normal" m="1rem 0rem" onClick={handleSubmit}>Submit</Button>
+            )}
+            </VStack>
+            </Flex>
+          </Flex>
         </PopoverBody>
         <PopoverFooter alignSelf='center'>
-          {(!showAlert && !showSuccess) && (
-            <Button m="0rem 1rem" onClick={handleSubmit}>Submit</Button>
-          )}
+          
           {showAlert && (
             <ScaleFade
               initialScale={0.9}
