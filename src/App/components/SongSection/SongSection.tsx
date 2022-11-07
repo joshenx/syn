@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import * as React from "react"
 import {
   Box,
   Grid,
@@ -40,8 +39,6 @@ export const SongSection = ({songId}: {songId:number}) => {
     if (error && status !== 406) {
       console.error(error)
     }
-
-    console.log("JSON FORMATTTED DATA:" + JSON.stringify(data))
     setColorData(data);
   }
 

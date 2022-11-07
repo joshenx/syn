@@ -1,4 +1,3 @@
-import * as React from "react"
 import {
   Grid,
   ScaleFade,
@@ -19,12 +18,13 @@ import {
   useDisclosure,
   CloseButton,
   Tooltip,
-  Box
+  Box,
+  Input
 } from "@chakra-ui/react"
 import { useState } from "react"
 import { FiHelpCircle } from 'react-icons/fi'
-import { ChromePicker } from 'react-color'
-//import { ColorPicker } from './ColorPicker/ColorPicker'
+import { ChromePicker, SliderPicker } from 'react-color'
+import { styles } from './customStyle.js'
 
 import { supabase } from '../supabaseClient'
 
@@ -36,12 +36,13 @@ export const ColorPopover = (props: any) => {
 
   // setState when onChange event triggered
   const handleColorChange = (color: any) => {
+    console.log(color);
     setColor(color.hex);
   };
 
   const handleSubmit = async () => {
     console.log({color});
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('hexcodes')
       .upsert({
         user_id: 1,
@@ -105,7 +106,6 @@ export const ColorPopover = (props: any) => {
           <Heading size='lg'>
             Syn @ {currTime}
           </Heading>
-          {/* refresh button */}
         </PopoverHeader>
         <PopoverCloseButton />
         <PopoverBody>
@@ -114,10 +114,17 @@ export const ColorPopover = (props: any) => {
             justifyContent="center"
           >
             <ChromePicker
+              styles={styles}
               color={color}
               onChange={handleColorChange}
               disableAlpha={true}
             />
+            {/* <SliderPicker
+              styles={styles}
+              color={color}
+              onChange={handleColorChange}
+            /> */}
+            <Input variant='filled' placeholder='Filled' />
           </Grid>
         </PopoverBody>
         <PopoverFooter alignSelf='center'>

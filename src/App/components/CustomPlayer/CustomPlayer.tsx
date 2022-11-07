@@ -32,7 +32,6 @@ export const CustomPlayer = (
   function processResult(res:any) {
     console.log(`Duration found: ${res}`);
     setDuration(res);
-    console.log(`Duration set to: ${duration}`)
   }
 
   function initMarkers() {
