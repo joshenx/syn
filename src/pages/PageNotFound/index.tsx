@@ -1,10 +1,5 @@
-import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom'
-
-import { Box, Heading, Text, Button } from '@chakra-ui/react';
-
-import { SongSection } from '../components/SongSection/SongSection'
-import { AboutSection } from '../components/AboutSection/AboutSection' 
+import { Box, Heading, Text, Button } from "@chakra-ui/react"
+import { useNavigate } from "react-router-dom";
 
 const PageNotFound = () => {
   const navigate = useNavigate();
@@ -39,13 +34,4 @@ const PageNotFound = () => {
   );
 }
 
-export const SwitchContainer = () => {
-  return (
-    <Routes>
-        <Route path="/" element={<SongSection songId={1}/>} />
-        <Route path="/about" element={<AboutSection />} />
-        <Route path="*" element={<PageNotFound />} />
-    </Routes>
-  )
-
-}
+export default PageNotFound

@@ -6,7 +6,7 @@ import {
   Heading,
 } from "@chakra-ui/react"
 
-export const AboutSection = (props:any) => {
+const About = (props:any) => {
   return (
     <Grid
       flexDirection="column"
@@ -38,3 +38,5 @@ export const AboutSection = (props:any) => {
     </Grid>
   )
 }
+
+export default About
