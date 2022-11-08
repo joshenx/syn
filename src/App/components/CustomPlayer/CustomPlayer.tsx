@@ -1,5 +1,5 @@
-import './style.css';
 import 'react-h5-audio-player/lib/styles.css';
+import './style.css';
 
 import { TriangleDownIcon } from '@chakra-ui/icons';
 import { Box, Tooltip, VStack } from '@chakra-ui/react';
