@@ -1,32 +1,28 @@
-import { ReactNode } from 'react';
+import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import {
-  Box,
-  Flex,
   Avatar,
+  Box,
+  Button,
+  Center,
+  Flex,
   HStack,
   IconButton,
   Link,
-  Button,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
   MenuDivider,
-  useDisclosure,
-  useColorModeValue,
+  MenuItem,
+  MenuList,
   Stack,
   useColorMode,
-  Center,
+  useColorModeValue,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { Link as ReachLink } from "react-router-dom"
-import {HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { ReactNode } from 'react';
+import { Link as ReachLink } from 'react-router-dom';
 
-const Links = {
-  'Gallery': '',
-  'Metronome': 'metronome',
-  'Charts': 'charts',
-  'Who am I?': 'about',
-};
+import pagesData from '../../pages/pagesData';
+import { routerType } from '../../types/router.types';
 
 const NavLink = ({ children, link }: { children: ReactNode, link: string }) => (
   <Link
@@ -63,8 +59,8 @@ export const NavBar = () => {
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
-              {Object.entries(Links).map(([k, v]) => (
-                <NavLink key={k} link={v}>{k}</NavLink>
+              {pagesData.filter(({ path }: routerType) => path !== '*').map(({ path, title }: routerType, index) => (
+                <NavLink key={index} link={path}>{title}</NavLink>
               ))}
             </HStack>
           </HStack>
