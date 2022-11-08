@@ -1,34 +1,34 @@
 import {
-  ScaleFade,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverArrow,
-  PopoverHeader,
-  PopoverCloseButton,
-  PopoverBody,
-  Button,
-  PopoverFooter,
-  Portal,
-  Heading,
   Alert,
-  AlertIcon,
   AlertDescription,
-  useDisclosure,
-  CloseButton,
-  Tooltip,
+  AlertIcon,
   Box,
-  Textarea,
-  Text,
+  Button,
+  CloseButton,
   Flex,
-  VStack
-} from "@chakra-ui/react"
-import React, { useState } from "react"
-import { FiHelpCircle } from 'react-icons/fi'
-import { ChromePicker } from 'react-color'
-import { styles } from './customStyle.js'
+  Heading,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+  Portal,
+  ScaleFade,
+  Text,
+  Textarea,
+  Tooltip,
+  useDisclosure,
+  VStack,
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { ChromePicker } from 'react-color';
+import { FiHelpCircle } from 'react-icons/fi';
 
-import { supabase } from '../supabaseClient'
+import { supabase } from '../supabaseClient';
+import { styles } from './customStyle.js';
 
 export const ColorPopover = (props: any) => {
   const [color, setColor] = useState('#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')); // define a state for the color prop

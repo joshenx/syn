@@ -1,16 +1,18 @@
-import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
-import { Box, VStack, Tooltip } from '@chakra-ui/react';
-import { TriangleDownIcon } from '@chakra-ui/icons'
-import 'react-h5-audio-player/lib/styles.css'
-import './style.css'
+import './style.css';
+import 'react-h5-audio-player/lib/styles.css';
+
+import { TriangleDownIcon } from '@chakra-ui/icons';
+import { Box, Tooltip, VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
+
 import { timestampToPercentage } from './helperFunctions';
 
 export const CustomPlayer = (
   {data, src}: {data:any[] | null, src:string | undefined},) => {
   const [duration, setDuration] = useState<string | undefined>(undefined)
   const [markers, setMarkers] = useState<any[]|undefined>(undefined)
-  const maxTries = 5;
+  const maxTries = 30;
   var t = 500;
 
   function rejectDelay(reason:any) {

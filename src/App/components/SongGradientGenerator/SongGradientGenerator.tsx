@@ -1,10 +1,11 @@
-import MeshGradient from 'mesh-gradient.js'
-import { useEffect, useState } from 'react'
-import { Stack, Box, Tooltip, } from '@chakra-ui/react'
-import { IconContext } from 'react-icons'
-import { InfoOutlineIcon } from '@chakra-ui/icons'
-import { IoMdRefresh } from 'react-icons/io'
-import './style.css'
+import './style.css';
+
+import { InfoOutlineIcon } from '@chakra-ui/icons';
+import { Box, Stack, Tooltip } from '@chakra-ui/react';
+import MeshGradient from 'mesh-gradient.js';
+import { useEffect, useState } from 'react';
+import { IconContext } from 'react-icons';
+import { IoMdRefresh } from 'react-icons/io';
 
 const DEFAULT_COLORS = ["#000000", "#222222", "#444444"]
 

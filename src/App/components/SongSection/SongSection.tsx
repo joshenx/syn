@@ -1,22 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {
-  Box,
-  Grid,
-  Text,
-  Flex,
-  VStack,
-  Spacer,
-  Heading,
-} from "@chakra-ui/react"
+import { Box, Flex, Grid, Heading, Spacer, Text, VStack } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
-import { ColorPopover } from "../ColorPopover/ColorPopover"
-import { CustomPlayer } from "../CustomPlayer/CustomPlayer"
-import { SongGradientGenerator } from "../SongGradientGenerator/SongGradientGenerator"
-import { VoteDataDisplay } from "../VoteDataDisplay/VoteDataDisplay"
-import { SongInfo } from "../SongInfo/SongInfo"
-
-import { useEffect, useState } from "react"
-import { supabase } from '../supabaseClient'
+import { ColorPopover } from '../ColorPopover/ColorPopover';
+import { CustomPlayer } from '../CustomPlayer/CustomPlayer';
+import { SongGradientGenerator } from '../SongGradientGenerator/SongGradientGenerator';
+import { SongInfo } from '../SongInfo/SongInfo';
+import { supabase } from '../supabaseClient';
+import { VoteDataDisplay } from '../VoteDataDisplay/VoteDataDisplay';
 
 export const SongSection = ({songId}: {songId:number}) => {
   interface SongData {

@@ -1,8 +1,9 @@
-import { pdfjs, Document, Page } from 'react-pdf';
-import { useState } from 'react';
-import { HStack, IconButton } from '@chakra-ui/react';
+import './style.css';
+
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
-import './style.css'
+import { HStack, IconButton } from '@chakra-ui/react';
+import { useState } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
 
 export const ScorePDFViewer = (props:any) => {
   const [numPages, setNumPages] = useState(null);

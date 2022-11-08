@@ -1,7 +1,7 @@
-import { routerType } from "../types/router.types";
-import About from "./About";
-import Gallery from "./Gallery";
-import PageNotFound from "./PageNotFound";
+import { routerType } from '../types/router.types';
+import About from './About';
+import Gallery from './Gallery';
+import PageNotFound from './PageNotFound';
 
 const pagesData: routerType[] = [
   {
