@@ -84,7 +84,7 @@ export const SongSection = ({songId}: {songId:number}) => {
       <Flex
         pt="2rem"
         paddingX="5vw"
-        direction="row"
+        direction={{ base:"column", lg:"row" }}
         justify="center"
         align="stretch"
         wrap="wrap"
