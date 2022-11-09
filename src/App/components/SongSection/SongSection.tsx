@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Box, Flex, Grid, Heading, Spacer, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, Grid, Heading, Skeleton, Spacer, Stack, Text, VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
 import { ColorPopover } from '../ColorPopover/ColorPopover';
@@ -95,6 +95,14 @@ export const SongSection = ({songId}: {songId:number}) => {
         <Spacer />
         <Flex m="1rem" direction="column" grow="4" shrink="1">
           <Box textAlign="left">
+            {song === null && 
+            <Stack>
+              <Skeleton height='40px' isLoaded={song !== null} />
+              <Skeleton height='20px' isLoaded={song !== null} />
+              <Skeleton height='20px' isLoaded={song !== null} />
+            </Stack>
+            }
+            
             <Heading>
               {song?.title}
             </Heading>

@@ -1,7 +1,7 @@
 import './style.css';
 
 import { InfoOutlineIcon } from '@chakra-ui/icons';
-import { Box, Stack, Tooltip } from '@chakra-ui/react';
+import { Box, Stack, Tooltip, CircularProgress } from '@chakra-ui/react';
 import MeshGradient from 'mesh-gradient.js';
 import { useEffect, useState } from 'react';
 import { IconContext } from 'react-icons';
@@ -85,6 +85,7 @@ export const SongGradientGenerator = ({data}: {data:any[] | null}) => {
       overflow="hidden"
       align="center"
     >
+      {colors ? 
       <Box position="relative">
         <Tooltip
           hasArrow
@@ -118,6 +119,7 @@ export const SongGradientGenerator = ({data}: {data:any[] | null}) => {
         </Tooltip>
         <canvas id={canvasId} />
       </Box>
+      : <CircularProgress isIndeterminate color='brand.green' />}
     </Stack>
   );
 }

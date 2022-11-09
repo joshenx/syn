@@ -11,12 +11,13 @@ import {
   Menu,
   MenuButton,
   MenuDivider,
-  MenuItem,
   MenuList,
   Stack,
   useColorMode,
   useColorModeValue,
   useDisclosure,
+  Collapse,
+  Hide
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { Link as ReachLink } from 'react-router-dom';
@@ -24,24 +25,26 @@ import { Link as ReachLink } from 'react-router-dom';
 import pagesData from '../../pages/pagesData';
 import { routerType } from '../../types/router.types';
 
-const NavLink = ({ children, link }: { children: ReactNode, link: string }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    as={ReachLink}
-    to={`/${link}`}>
-    {children}
-  </Link>
-);
-
 export const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  
+  const NavLink = ({ children, link }: { children: ReactNode, link: string }) => (
+    <Link
+      px={2}
+      py={1}
+      rounded={'md'}
+      _hover={{
+        textDecoration: 'none',
+        bg: useColorModeValue('gray.200', 'gray.700'),
+      }}
+      as={ReachLink}
+      to={`/${link}`}
+      onClick={onClose}>
+      {children}
+    </Link>
+  );
+  
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -54,12 +57,13 @@ export const NavBar = () => {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box>Syn</Box>
+            <Box pl="1rem" fontWeight="bold">Syn</Box>
             <HStack
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
-              {pagesData.filter(({ path }: routerType) => path !== '*').map(({ path, title }: routerType, index) => (
+              {pagesData.filter(({ path }: routerType) => path !== '*')
+                .map(({ path, title }: routerType, index) => (
                 <NavLink key={index} link={path}>{title}</NavLink>
               ))}
             </HStack>
@@ -93,19 +97,40 @@ export const NavBar = () => {
                   </Center>
                   <br />
                   <Center>
-                    <p>Username</p>
+                    <p>Average Music Enjoyer</p>
                   </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
+                  {/* <MenuItem>Your Servers</MenuItem>
                   <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                  <MenuItem>Logout</MenuItem> */}
                 </MenuList>
               </Menu>
             </Stack>
           </Flex>
         </Flex>
+
+        <Hide above='md'>
+        <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
+          <Stack
+            my={3}
+            pl={4}
+            borderLeft={1}
+            borderStyle={'solid'}
+            fontSize="2xl"
+            textTransform="uppercase"
+            borderColor={useColorModeValue('gray.200', 'gray.700')}
+            align={'start'}>
+            {pagesData.filter(({ path }: routerType) => path !== '*')
+                  .map(({ path, title }: routerType, index) => (
+                  <NavLink key={index} link={path}>{title}</NavLink>
+                ))}
+          </Stack>
+        </Collapse>
+        </Hide>
       </Box>
+
+      
     </>
   );
 }
