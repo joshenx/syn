@@ -120,7 +120,7 @@ export const SongSection = ({songId}: {songId:number}) => {
             spacing={2}
             align="stretch"
           >
-            {hexData && <CustomPlayer data={hexData} src={song?.url} />}
+            <CustomPlayer data={hexData} src={song?.url} />
             <ColorPopover dataUpdater={refreshData} songId={songId} />
           </VStack>
         </Flex>

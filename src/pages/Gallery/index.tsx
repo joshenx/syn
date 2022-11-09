@@ -1,11 +1,11 @@
-import { Box, HStack, Button } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import { Box, Button, HStack } from '@chakra-ui/react';
+import { useState } from 'react';
 
 import { SongSection } from '../../App/components/SongSection/SongSection';
 
 const Gallery = () => {
-  const [song, setSong] = useState(2);
+  const DEFAULT_INDEX = 3;
+  const [song, setSong] = useState(DEFAULT_INDEX);
 
   const handleSongChange = (e:any) => {
     console.log(`Setting song to id: ${e.target.value}`)

@@ -1,7 +1,7 @@
 
-export const timestampToPercentage = (timestamp:string | undefined, duration:string | undefined) => {
+export const timestampToPercentage = (timestamp:string | undefined, duration:number) => {
   //console.log(`Converting timestampTo%: ${timestamp}`);
-  const percentageFloat = timestampToSeconds(timestamp)/timestampToSeconds(duration);
+  const percentageFloat = timestampToSeconds(timestamp)/duration;
   const percentage = (percentageFloat*100).toString();
   //console.log(`Percentage of hexcode: ${percentage}`)
   return `${percentage}%`;
