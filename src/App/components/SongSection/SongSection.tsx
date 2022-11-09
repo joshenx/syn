@@ -9,13 +9,18 @@ import { SongInfo } from '../SongInfo/SongInfo';
 import { supabase } from '../supabaseClient';
 import { VoteDataDisplay } from '../VoteDataDisplay/VoteDataDisplay';
 
-export const SongSection = ({songId}: {songId:number}) => {
-  interface SongData {
-    title: string;
-    composer: string;
-    description: string;
-    url: string;
-  }
+export interface SongData {
+  song_id: number;
+  title: string;
+  composer: string;
+  description: string;
+  analysis: string;
+  genre: string;
+  has_score: boolean;
+  url: string;
+}
+
+export const SongSection = ({songId}: {songId:number}) => { 
   
   const [colorData, setColorData] = useState<any[] | null>(null);
   const [hexData, setHexData] = useState<any[] | null>(null);
@@ -71,7 +76,7 @@ export const SongSection = ({songId}: {songId:number}) => {
     fetchSong();
     fetchColorsData();
     fetchHexData();
-  }, [])
+  }, [songId])
   
   return (
     <Grid
@@ -79,21 +84,20 @@ export const SongSection = ({songId}: {songId:number}) => {
       justifyContent="center"
       minH="100vh"
       overflow="hidden"
-      p={3}
+      px={3}
     >
       <Flex
-        pt="2rem"
         paddingX="5vw"
         direction={{ base:"column", lg:"row" }}
         justify="center"
         align="stretch"
         wrap="wrap"
       >
-        <Flex m="1rem" direction="column" grow="2" shrink="1">
+        <Flex m="1rem" direction="column" grow="0" >
           <SongGradientGenerator data={colorData} />
         </Flex>
         <Spacer />
-        <Flex m="1rem" direction="column" grow="4" shrink="1">
+        <Flex m="1rem" direction="column" grow="3" width={{ base:"auto", lg: "600px" }}>
           <Box textAlign="left">
             {song === null && 
             <Stack>
@@ -102,7 +106,6 @@ export const SongSection = ({songId}: {songId:number}) => {
               <Skeleton height='20px' isLoaded={song !== null} />
             </Stack>
             }
-            
             <Heading>
               {song?.title}
             </Heading>
@@ -122,7 +125,7 @@ export const SongSection = ({songId}: {songId:number}) => {
           </VStack>
         </Flex>
         <Spacer />
-        <Flex m="1rem" direction="column" grow="2" shrink="1">
+        <Flex m="1rem" direction="column" grow="1">
           <VoteDataDisplay data={colorData} />
         </Flex>
         <SongInfo songData={song}/>

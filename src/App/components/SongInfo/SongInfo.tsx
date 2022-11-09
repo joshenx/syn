@@ -11,8 +11,9 @@ import {
   TabPanel
 } from "@chakra-ui/react"
 import { ScorePDFViewer } from '../ScorePDFViewer/ScorePDFViewer'
+import { SongData } from "../SongSection/SongSection"
 
-export const SongInfo = (props:any) => {
+export const SongInfo = ({songData}:{songData:SongData | null}) => {
   return (
     <Flex
       mt="2rem"
@@ -67,7 +68,7 @@ export const SongInfo = (props:any) => {
                 whiteSpace="pre-line"
                 lineHeight="2rem"
               >
-                {props.songData?.description}
+                {songData?.description}
               </Text>
             </TabPanel>
             <TabPanel>
@@ -77,11 +78,13 @@ export const SongInfo = (props:any) => {
                 whiteSpace="pre-line"
                 lineHeight="2rem"
               >
-                {props.songData?.analysis}
+                {songData?.analysis}
               </Text>
             </TabPanel>
             <TabPanel>
-              <ScorePDFViewer songId={props.songData?.song_id}/>
+              {songData?.has_score
+                ? <ScorePDFViewer songId={songData?.song_id}/>
+                : <Box width="100%"/>}
             </TabPanel>
           </TabPanels>
         </Tabs>

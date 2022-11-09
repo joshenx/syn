@@ -5,7 +5,7 @@ import { HStack, IconButton } from '@chakra-ui/react';
 import { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 
-export const ScorePDFViewer = (props:any) => {
+export const ScorePDFViewer = ({songId}:{songId:number}) => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [renderedPageNumber, setRenderedPageNumber] = useState<number | null>(null);
@@ -38,7 +38,7 @@ export const ScorePDFViewer = (props:any) => {
         disabled={pageNumber <= 1}
         onClick={prevPage}
       />
-      <Document file={`${process.env.PUBLIC_URL}/scores/1.pdf`} onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file={`${process.env.PUBLIC_URL}/scores/${songId}.pdf`} onLoadSuccess={onDocumentLoadSuccess}>
         {isLoading && renderedPageNumber ? (
           <Page
             key={renderedPageNumber}
