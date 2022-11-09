@@ -89,11 +89,11 @@ export const SongSection = ({songId}: {songId:number}) => {
         align="stretch"
         wrap="wrap"
       >
-        <Flex m="1rem" direction="column" grow="2">
+        <Flex m="1rem" direction="column" grow="2" shrink="1">
           <SongGradientGenerator data={colorData} />
         </Flex>
         <Spacer />
-        <Flex m="1rem" direction="column" grow="4">
+        <Flex m="1rem" direction="column" grow="4" shrink="1">
           <Box textAlign="left">
             <Heading>
               {song?.title}
@@ -114,10 +114,8 @@ export const SongSection = ({songId}: {songId:number}) => {
           </VStack>
         </Flex>
         <Spacer />
-        <Flex m="1rem" direction="column" grow="2">
-          <Box>
-            <VoteDataDisplay data={colorData} />
-          </Box>
+        <Flex m="1rem" direction="column" grow="2" shrink="1">
+          <VoteDataDisplay data={colorData} />
         </Flex>
         <SongInfo songData={song}/>
       </Flex>

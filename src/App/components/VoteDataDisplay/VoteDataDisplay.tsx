@@ -32,7 +32,7 @@ export const VoteDataDisplay = ({data}: {data:any[] | null}) => {
         },
       }}
     >
-      <Table size='md'>
+      <Table size={{ base:'sm', md:'md' }}>
         <Thead>
           <Tr>
             <Th>Color</Th>
