@@ -25,6 +25,7 @@ export const SongSection = ({songId}: {songId:number}) => {
   const [colorData, setColorData] = useState<any[] | null>(null);
   const [hexData, setHexData] = useState<any[] | null>(null);
   const [song, setSong] = useState<SongData | null>(null);
+  const [refresh, setRefresh] = useState<boolean>(false);
   
   const fetchColorsData = async () => {
     let { data, error, status } = await supabase
@@ -70,6 +71,11 @@ export const SongSection = ({songId}: {songId:number}) => {
   const refreshData = () => {
     fetchColorsData();
     fetchHexData();
+    setRefresh(true);
+  }
+
+  const completeRefresh = () => {
+    setRefresh(false);
   }
 
   useEffect(() => {
@@ -120,7 +126,7 @@ export const SongSection = ({songId}: {songId:number}) => {
             spacing={2}
             align="stretch"
           >
-            <CustomPlayer data={hexData} src={song?.url} />
+            <CustomPlayer data={hexData} src={song?.url} refreshStatus={refresh} refreshCallback={completeRefresh}/>
             <ColorPopover dataUpdater={refreshData} songId={songId} />
           </VStack>
         </Flex>

@@ -44,7 +44,7 @@ export const ColorPopover = (props: any) => {
   };
 
   const handleSubmit = async () => {
-    console.log({color});
+    console.log(`Submitting ${color}..`);
     const { error } = await supabase
       .from('hexcodes')
       .upsert({
@@ -60,6 +60,7 @@ export const ColorPopover = (props: any) => {
       console.log({showAlert})
     } else {
       openSuccess();
+      console.log(`${color} successfully submitted.`);
       props.dataUpdater();
     }
   };

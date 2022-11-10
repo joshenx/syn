@@ -11,7 +11,8 @@ import { timestampToPercentage } from './helperFunctions';
 import H5AudioPlayer from 'react-h5-audio-player';
 
 export const CustomPlayer = (
-  {data, src}: {data:any[] | null, src:string | undefined},) => {
+  {data, src, refreshStatus, refreshCallback}:
+  {data:any[] | null, src:string | undefined, refreshStatus:boolean, refreshCallback:Function}) => {
   const [duration, setDuration] = useState<number | undefined>(undefined)
   const [markers, setMarkers] = useState<any[]|undefined>(undefined)
   const player = createRef<H5AudioPlayer>();
@@ -59,6 +60,14 @@ export const CustomPlayer = (
     initMarkers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [duration])
+
+  useEffect(() => {
+    if (refreshStatus) {
+      initMarkers();
+      refreshCallback();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data])
 
   return (
     <VStack
