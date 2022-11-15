@@ -38,7 +38,7 @@ export const ScorePDFViewer = ({songId}:{songId:number}) => {
         disabled={pageNumber <= 1}
         onClick={prevPage}
       />
-      <Document file={`${process.env.PUBLIC_URL}/scores/${songId}.pdf`} onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file={`/scores/${songId}.pdf`} onLoadSuccess={onDocumentLoadSuccess}>
         {isLoading && renderedPageNumber ? (
           <Page
             key={renderedPageNumber}
