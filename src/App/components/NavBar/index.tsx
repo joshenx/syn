@@ -51,9 +51,9 @@ const NavBar = () => {
       <Flex
         as="header"
         position="fixed"
-        backgroundColor="rgba(var(--chakra-colors-chakra-body-bg), 0.8)"
-        backdropFilter="contrast(102%) blur(5px)"
         top="0"
+        backdropFilter="contrast(98%) blur(5px)"
+        boxShadow="0px 0px 30px 0px rgba(0, 0, 0, 0.15)"
         p="0.5rem 1rem"
         w="100%"
         alignItems={'center'}
@@ -125,9 +125,10 @@ const NavBar = () => {
         <Stack
           my={3}
           pl={4}
+          mt="20"
           borderLeft={1}
           borderStyle={'solid'}
-          fontSize="2xl"
+          fontSize="xl"
           textTransform="uppercase"
           borderColor={useColorModeValue('gray.200', 'gray.700')}
           align={'start'}>
@@ -136,6 +137,7 @@ const NavBar = () => {
                 <NavLink key={index} link={path}>{title}</NavLink>
               ))}
         </Stack>
+        <Divider/>
       </Collapse>
       </Hide>
     </>
