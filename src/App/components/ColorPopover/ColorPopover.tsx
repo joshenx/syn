@@ -102,7 +102,7 @@ export const ColorPopover = (props: any) => {
         fontWeight="normal"
         width="100%"
       >
-        Syn Here
+        Vote Here
       </Button>
     </PopoverTrigger>
     </Box>

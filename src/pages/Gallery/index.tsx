@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { SongSection } from '../../App/components/SongSection/SongSection';
 
 const Gallery = () => {
-  const DEFAULT_INDEX = 3;
+  const DEFAULT_INDEX = 1;
   const [song, setSong] = useState(DEFAULT_INDEX);
 
   const handleSongChange = (e:any) => {
