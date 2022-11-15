@@ -15,7 +15,7 @@ const Gallery = () => {
   return (
     <Box>
       <HStack justifyContent={'center'} m="1rem" spacing={4}>
-        {['1', '2', '3'].map((songId) => (
+        {['1', '2'].map((songId) => (
           <Button
             size={'sm'}
             key={songId}
