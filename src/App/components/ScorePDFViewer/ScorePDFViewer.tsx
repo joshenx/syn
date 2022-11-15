@@ -31,12 +31,15 @@ export const ScorePDFViewer = ({songId}:{songId:number}) => {
   const isLoading = renderedPageNumber !== pageNumber;
 
   return (
-    <HStack width="100%">
+    <HStack position='relative' alignItems='center' justifyContent='center'>
       <IconButton
+        position='absolute'
+        left='2'
         aria-label='Previous page'
-        icon={<ArrowLeftIcon/>}
+        icon={<ArrowLeftIcon color='var(--chakra-colors-chakra-body-bg)'/>}
         disabled={pageNumber <= 1}
         onClick={prevPage}
+        zIndex='overlay'
       />
       <Document file={`/scores/${songId}.pdf`} onLoadSuccess={onDocumentLoadSuccess}>
         {isLoading && renderedPageNumber ? (
@@ -53,10 +56,13 @@ export const ScorePDFViewer = ({songId}:{songId:number}) => {
           />
       </Document>
       <IconButton
+        position='absolute'
+        right='0'
         aria-label='Next page'
-        icon={<ArrowRightIcon/>}
+        icon={<ArrowRightIcon color='var(--chakra-colors-chakra-body-bg)'/>}
         disabled={pageNumber >= numPages!}
         onClick={nextPage}
+        zIndex='overlay'
       />
     </HStack>
   )

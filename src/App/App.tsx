@@ -6,9 +6,9 @@ import { Box, ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
 
 import Router from '../pages/router';
-import { NavBar } from './components/NavBar';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import theme from './theme';
-
 
 export const App = () => (
 
@@ -16,7 +16,10 @@ export const App = () => (
     <BrowserRouter>
       <Box fontSize="md">
         <NavBar />
-        <Router />
+        <Box mt="20">
+          <Router />
+        </Box>
+        <Footer />
       </Box>
     </BrowserRouter>
   </ChakraProvider>
