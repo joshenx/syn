@@ -8,6 +8,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@fontsource/inter": "^4.5.14",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@supabase/supabase-js": "^2.0.5",
     "@syncfusion/ej2-react-inputs": "^20.3.50",
     "@testing-library/jest-dom": "^5.16.5",
