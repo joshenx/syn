@@ -2,7 +2,7 @@ import 'react-h5-audio-player/lib/styles.css';
 import './style.css';
 
 import { TriangleDownIcon } from '@chakra-ui/icons';
-import { Box, Tooltip, VStack } from '@chakra-ui/react';
+import { Box, Tooltip, VStack, Stack, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { createRef } from 'react';
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
@@ -22,11 +22,18 @@ export const CustomPlayer = (
     const newMarkers = data?.map((row, id) => {
       return (
       <Tooltip
+        backgroundColor={row.hex_code}
+        textShadow={`1px 1px 3px rgba(0, 0, 0, 0.8)`}
         arrowSize={2}
         hasArrow
         placement='top-start'
         key={id}
-        label={row.comment}
+        label={row.username
+          ? <Stack spacing='0'>
+              <Text >{row.comment}</Text>
+              <Text fontSize='xx-small'>-{row.username}</Text>
+            </Stack>
+          : row.comment}
         fontSize='sm'>
         <TriangleDownIcon
           color={row.hex_code}

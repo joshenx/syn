@@ -7,6 +7,7 @@ import {
   CloseButton,
   Flex,
   Heading,
+  Input,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -23,17 +24,18 @@ import {
   useDisclosure,
   VStack,
 } from '@chakra-ui/react';
+import BadWordsFilter from 'bad-words';
 import React, { useState } from 'react';
 import { ChromePicker } from 'react-color';
 import { FiHelpCircle } from 'react-icons/fi';
 
 import { supabase } from '../supabaseClient';
 import { styles } from './customStyle.js';
-import BadWordsFilter from 'bad-words';
 
 export const ColorPopover = (props: any) => {
   const [color, setColor] = useState('#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')); // define a state for the color prop
   const [comment, setComment] = useState('')
+  const [name, setName] = useState('')
   const [currTime, setCurrTime] = useState<string | undefined>('');
   const {isOpen: showAlert, onClose: closeAlert, onOpen: openAlert} = useDisclosure({ defaultIsOpen: false })
   const {isOpen: showSuccess, onClose: closeSuccess, onOpen: openSuccess} = useDisclosure({ defaultIsOpen: false })
@@ -60,7 +62,8 @@ export const ColorPopover = (props: any) => {
         song_id: props.songId,
         hex_code: color,
         timestamp: currTime,
-        comment: comment})
+        comment: comment,
+        username: name})
       .select()
     if (error) {
       console.log("Error")
@@ -81,6 +84,11 @@ export const ColorPopover = (props: any) => {
   const handleCommentChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
     let inputValue = e.target.value;
     setComment(inputValue);
+  }
+
+  const handleNameChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    let inputValue = e.target.value;
+    setName(inputValue);
   }
 
   return (
@@ -189,6 +197,16 @@ export const ColorPopover = (props: any) => {
               resize="none"
               size='xs'
               placeholder='Type your comment here!' />
+            <Input
+              value={name}
+              onChange={handleNameChange}
+              placeholder='Your Name (optional)'
+              size='xs'
+              variant='filled'
+              _focus={{
+                borderColor: color,
+                borderRadius: '5px'
+              }}/>
             {(!showAlert && !showSuccess) && (
               <Button fontWeight="normal" m="1rem 0rem" onClick={handleSubmit}>Submit</Button>
             )}
