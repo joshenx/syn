@@ -4,7 +4,9 @@ import {
   Text,
   Flex,
   Heading,
+  Image,
 } from "@chakra-ui/react"
+import './style.css'
 
 const About = (props:any) => {
   return (
@@ -23,12 +25,25 @@ const About = (props:any) => {
         align="stretch"
         wrap="wrap"
       >
+        <Image
+          className='easeload'
+          src='/images/AntelopeCanyon.png'
+          alt='Joshen Lim'
+          objectFit='cover'
+          boxSize='600px'
+          filter='opacity(0.4) contrast(150%)'
+          objectPosition='bottom'
+          position='absolute'
+          right='10%'
+          zIndex={-1}/>
         <Flex m="1rem" direction="column">
           <Box textAlign="left" width="min(80%, 720px)">
             <Heading>
               About Me
             </Heading>
             <Text
+              lineHeight="2rem"
+              mt='1rem'
               align='left'
             >
               Hi, I'm Joshen. I'm a musician of {new Date().getFullYear()-2010} years, a freelance
