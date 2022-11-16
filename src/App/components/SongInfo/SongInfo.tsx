@@ -81,7 +81,7 @@ export const SongInfo = ({songData}:{songData:SongData | null}) => {
                 align='left'
                 whiteSpace="pre-line"
                 lineHeight="2rem"
-                mb="2rem"
+                pb="2rem"
                 as='cite'
               >
                 {songData?.special_notes}
