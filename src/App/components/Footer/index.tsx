@@ -11,7 +11,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
-import { FaBehance, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaBehance, FaGithub, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 const ListHeader = ({ children }: { children: ReactNode }) => {
   return (
@@ -48,6 +48,13 @@ const Footer = () => {
               target="_blank">GitHub</Link>
           </Stack>
           <ButtonGroup variant="ghost">
+            <IconButton
+              as="a"
+              href="https://www.youtube.com/channel/UCtNvViFMEl06md4ouf1YTRw"
+              aria-label="Youtube"
+              target="_blank"
+              icon={<FaYoutube fontSize="1.25rem" />}
+            />
             <IconButton
               as="a"
               href="http://linkedin.com/in/joshenxlim"
