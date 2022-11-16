@@ -18,6 +18,7 @@ export interface SongData {
   genre: string;
   has_score: boolean;
   url: string;
+  special_notes: string;
 }
 
 export const SongSection = ({songId}: {songId:number}) => { 

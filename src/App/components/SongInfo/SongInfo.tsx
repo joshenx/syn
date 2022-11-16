@@ -70,6 +70,22 @@ export const SongInfo = ({songData}:{songData:SongData | null}) => {
               >
                 {songData?.description}
               </Text>
+              <Heading
+                size="lg"
+                pt="2rem"
+                pb="1rem">
+              Joshen says...
+              </Heading>
+              <Text
+                textAlign="justify"
+                align='left'
+                whiteSpace="pre-line"
+                lineHeight="2rem"
+                mb="2rem"
+                as='cite'
+              >
+                {songData?.special_notes}
+              </Text>
             </TabPanel>
             <TabPanel>
               <Text
