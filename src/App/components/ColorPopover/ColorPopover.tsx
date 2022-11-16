@@ -29,6 +29,7 @@ import { FiHelpCircle } from 'react-icons/fi';
 
 import { supabase } from '../supabaseClient';
 import { styles } from './customStyle.js';
+import BadWordsFilter from 'bad-words';
 
 export const ColorPopover = (props: any) => {
   const [color, setColor] = useState('#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')); // define a state for the color prop
@@ -37,6 +38,8 @@ export const ColorPopover = (props: any) => {
   const {isOpen: showAlert, onClose: closeAlert, onOpen: openAlert} = useDisclosure({ defaultIsOpen: false })
   const {isOpen: showSuccess, onClose: closeSuccess, onOpen: openSuccess} = useDisclosure({ defaultIsOpen: false })
 
+  var filter = new BadWordsFilter();
+  
   // setState when onChange event triggered
   const handleColorChange = (color: any) => {
     console.log(color);
@@ -44,6 +47,11 @@ export const ColorPopover = (props: any) => {
   };
 
   const handleSubmit = async () => {
+    if (filter.isProfane(comment)) {
+      openAlert();
+      return;
+    }
+
     console.log(`Submitting ${color}..`);
     const { error } = await supabase
       .from('hexcodes')
@@ -201,7 +209,7 @@ export const ColorPopover = (props: any) => {
               variant='solid'
             >
             <AlertIcon />
-            <AlertDescription>Submission failed</AlertDescription>
+            <AlertDescription fontSize='sm'>Submission failed. Either our server is down or your comment was naughty!</AlertDescription>
             <CloseButton
               alignSelf='flex-start'
               position='relative'
@@ -223,7 +231,7 @@ export const ColorPopover = (props: any) => {
               variant='solid'
             >
             <AlertIcon />
-            <AlertDescription>Submission success!</AlertDescription>
+            <AlertDescription fontSize='sm'>Submission success!</AlertDescription>
             <CloseButton
               textAlign="center"
               alignSelf='flex-start'
