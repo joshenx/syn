@@ -39,7 +39,7 @@ const Footer = () => {
             <ListHeader>Home</ListHeader>
             <Link href={'/'}>Gallery</Link>
             <Text color='disabled'>Metronome (Coming Soon!)</Text>
-            <Link href={'/about'}>About Me</Link>
+            {/* <Link href={'/about'}>About Me</Link> */}
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Contribute</ListHeader>
