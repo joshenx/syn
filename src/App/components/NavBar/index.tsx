@@ -125,8 +125,13 @@ const NavBar = () => {
         <Stack
           my={3}
           pl={4}
+          backdropFilter="contrast(98%) blur(5px)"
+          boxShadow="0px 0px 30px 0px rgba(0, 0, 0, 0.15)"
+          borderRadius='5px'
           mt="20"
+          position='fixed'
           borderLeft={1}
+          zIndex="overlay"
           borderStyle={'solid'}
           fontSize="xl"
           textTransform="uppercase"
