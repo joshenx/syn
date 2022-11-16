@@ -85,6 +85,7 @@ export const ColorPopover = (props: any) => {
         this timestamp? Submit your vote (aka a Syn), and compare how
         many people feel the same way as you!'
       placement='bottom'
+      openDelay={500}
     >
     <Box 
       style={{

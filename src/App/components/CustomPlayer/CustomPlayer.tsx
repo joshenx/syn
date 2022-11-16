@@ -81,9 +81,11 @@ export const CustomPlayer = (
         >
         {markers?.map((component) => {return component})}
       </Box>
+      
       <AudioPlayer
         onLoadedMetaData={getDuration}
         ref={player}
+        autoPlayAfterSrcChange={false}
         autoPlay={false}
         style={{
           width: '100%'

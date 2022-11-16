@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Box, Flex, Grid, Heading, Skeleton, Spacer, Stack, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, Grid, Heading, Skeleton, Spacer, Stack, Text, VStack, Tooltip } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
 import { ColorPopover } from '../ColorPopover/ColorPopover';
@@ -112,9 +112,12 @@ export const SongSection = ({songId}: {songId:number}) => {
               <Skeleton height='20px' isLoaded={song !== null} />
             </Stack>
             }
+            <Tooltip label='Go on! Play me!' openDelay={500} hasArrow placement='bottom' defaultIsOpen>
             <Heading>
               {song?.title}
             </Heading>
+            
+            </Tooltip>
             <Text
               align='left'
             >
