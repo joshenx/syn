@@ -22,8 +22,6 @@ export const CustomPlayer = (
     const newMarkers = data?.map((row, id) => {
       return (
       <Tooltip
-        backgroundColor={row.hex_code}
-        textShadow={`1px 1px 3px rgba(0, 0, 0, 0.4)`}
         arrowSize={2}
         hasArrow
         placement='top-start'
@@ -93,7 +91,6 @@ export const CustomPlayer = (
         onLoadedMetaData={getDuration}
         ref={player}
         autoPlayAfterSrcChange={false}
-        autoPlay={false}
         style={{
           width: '100%'
         }}
