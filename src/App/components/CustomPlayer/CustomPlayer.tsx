@@ -63,7 +63,6 @@ export const CustomPlayer = (
 
   useEffect(() => {
     if (duration) {
-      console.log("duration change")
       initMarkers();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -71,7 +70,6 @@ export const CustomPlayer = (
 
   useEffect(() => {
     if (refreshStatus) {
-      console.log("refresh detect")
       initMarkers();
       refreshCallback();
     }
