@@ -62,12 +62,14 @@ export const CustomPlayer = (
   }
 
   useEffect(() => {
+    console.log("duration change")
     initMarkers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [duration])
 
   useEffect(() => {
     if (refreshStatus) {
+      console.log("refresh detect")
       initMarkers();
       refreshCallback();
     }
@@ -90,6 +92,8 @@ export const CustomPlayer = (
       <AudioPlayer
         onLoadedMetaData={getDuration}
         ref={player}
+        autoPlayAfterSrcChange={false}
+        autoPlay={false}
         style={{
           width: '100%'
         }}
