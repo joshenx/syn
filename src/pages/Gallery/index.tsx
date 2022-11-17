@@ -5,19 +5,20 @@ import { SongSection } from '../../App/components/SongSection/SongSection';
 import { supabase } from '../../App/components/supabaseClient';
 
 const Gallery = () => {
-  const [numSongs, setNumSongs] = useState<number>();
+  const [numSongs, setNumSongs] = useState<any[] | null>([]);
 
   const fetchSongs = async () => {
     let { data, error, status } = await supabase
       .from('songs')
-      .select('*')
-      .eq('is_active', 'true');
+      .select('song_id')
+      .eq('is_active', 'true')
+      .order('song_id')
 
     if (error && status !== 406) {
       console.error(error)
     } else {
       console.log(`TOTAL OF ${data?.length} SONGS FOUND`)
-      setNumSongs(data?.length)
+      setNumSongs(data)
     }
   }
 
@@ -44,14 +45,14 @@ const Gallery = () => {
         p="0.5rem 1rem"
         borderRadius='1rem'
         spacing={4}>
-        {Array.from({length: numSongs!}, (_, i) => i + 1).map((songId) => (
+        {numSongs?.map((entry, i) => (
           <Button
             size={'sm'}
-            key={songId}
-            value={songId}
+            key={i+1}
+            value={entry['song_id']}
             borderRadius='full'
             variant='solid'
-            bgColor={song === songId ? 'brand.green' : 'brand.pink'}
+            bgColor={song === entry['song_id'] ? 'brand.green' : 'brand.pink'}
             _hover={{
               transform: "scale(1.2)",
             }}
@@ -61,7 +62,7 @@ const Gallery = () => {
             transition="all cubic-bezier(.05,.38,.67,.99) 0.2s"
             onClick={handleSongChange}
           >
-            {songId}
+            {i+1}
             {/*<TagCloseButton />*/}
           </Button>
         ))}
