@@ -90,7 +90,6 @@ export const CustomPlayer = (
       <AudioPlayer
         onLoadedMetaData={getDuration}
         ref={player}
-        autoPlayAfterSrcChange={false}
         style={{
           width: '100%'
         }}
