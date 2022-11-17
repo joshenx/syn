@@ -62,8 +62,10 @@ export const CustomPlayer = (
   }
 
   useEffect(() => {
-    console.log("duration change")
-    initMarkers();
+    if (duration) {
+      console.log("duration change")
+      initMarkers();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [duration])
 
