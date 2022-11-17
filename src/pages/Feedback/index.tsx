@@ -82,7 +82,7 @@ const Feedback = () => {
       <Heading>Give me some feedback!</Heading>
       <Text fontSize='md' fontStyle='normal'>
         Whether you have an idea for a new feature, or you hate one of the songs 
-        in the gallery, or something's broken, let me know!
+        in the gallery, or something's broken, or you wanna contribute, let me know!
       </Text>
       <Divider my='1rem'/>
       <Textarea
