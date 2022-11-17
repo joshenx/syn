@@ -10,7 +10,8 @@ const Gallery = () => {
   const fetchSongs = async () => {
     let { data, error, status } = await supabase
       .from('songs')
-      .select('*');
+      .select('*')
+      .eq('is_active', 'true');
 
     if (error && status !== 406) {
       console.error(error)
