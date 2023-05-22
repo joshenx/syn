@@ -6,6 +6,7 @@ import MeshGradient from 'mesh-gradient.js';
 import { useEffect, useState } from 'react';
 import { IconContext } from 'react-icons';
 import { IoMdRefresh } from 'react-icons/io';
+import { AiOutlineEyeInvisible, AiFillEye } from 'react-icons/ai'
 
 const DEFAULT_COLORS = ["#000000", "#222222", "#444444"]
 
@@ -13,6 +14,7 @@ const canvasId = "my-canvas"
 
 export const SongGradientGenerator = ({data}: {data:any[] | null}) => {
   const [colors, setColors] = useState<any[] | undefined>(undefined);
+  const [isHidden, toggleHidden] = useState(true);
   const [gradient] = useState(new MeshGradient());
   
   const maxTries = 5;
@@ -67,6 +69,7 @@ export const SongGradientGenerator = ({data}: {data:any[] | null}) => {
 
   useEffect(() => {
     if (colors) {initGradient();}
+    toggleHidden(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colors])
 
@@ -78,6 +81,17 @@ export const SongGradientGenerator = ({data}: {data:any[] | null}) => {
     }
   }
 
+  const handleToggleHidden = () => {
+    toggleHidden(!isHidden);
+    console.log(`Should hide gradient: ${isHidden}`);
+    if (isHidden) {
+      gradient.initGradient("#" + canvasId, DEFAULT_COLORS);
+    } else {
+      gradient.initGradient("#" + canvasId, colors);
+    }
+    gradient.changePosition(Math.floor(Math.random() * 1000));
+  }
+
   return (
     <Stack
       p="1rem"
@@ -87,27 +101,39 @@ export const SongGradientGenerator = ({data}: {data:any[] | null}) => {
     >
       {colors ? 
       <Box position="relative">
-        <Tooltip
-          hasArrow
-          label='This gradient was generated with the top 4 hexcodes!'
-          maxWidth="150px"
-          placement="top"
-          fontSize='xs'
+        <IconContext.Provider
+          value={{
+            style: {
+              position: "absolute",
+              margin: "1rem",
+              left: 1,
+              color: "white",
+              cursor: "pointer"
+            }
+          }}
         >
-          <IconContext.Provider
-            value={{
-              style: {
-                position: "absolute",
-                margin: "1rem",
-                left: 1,
-                color: "white",
-                cursor: "pointer"
-              }
-            }}
-          >
-            <IoMdRefresh onClick={refreshGradient} />
-          </IconContext.Provider>
-        </Tooltip>
+          <IoMdRefresh onClick={refreshGradient} />
+        </IconContext.Provider>
+        
+        <IconContext.Provider
+          value={{
+            style: {
+              position: "absolute",
+              margin: "1rem",
+              marginLeft: "auto",
+              marginRight: "auto",
+              left: "0",
+              right: "0",
+              color: "white",
+              cursor: "pointer"
+            }
+          }}
+        >
+          {isHidden
+            ? <AiOutlineEyeInvisible onClick={handleToggleHidden} />
+            : <AiFillEye onClick={handleToggleHidden} />
+          }
+        </IconContext.Provider>
         <Tooltip
           hasArrow
           label='This gradient was generated with the top 4 hexcodes!'
