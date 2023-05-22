@@ -1,0 +1,17 @@
+.gradient-header {
+    background: linear-gradient(92deg, rgba(241, 156, 252, 0.2), rgba(126, 255, 175, 0.2), rgba(250, 103, 255, 0.2), rgba(165 236, 243,0.2));
+    background-size: 200% 200%;
+    animation: gradient-bg 20s ease infinite;
+}
+
+@keyframes gradient-bg {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

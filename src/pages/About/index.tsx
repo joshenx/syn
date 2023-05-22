@@ -1,6 +1,6 @@
 import './style.css';
 
-import { Box, ButtonGroup, Flex, Grid, Heading, IconButton, Image, Text } from '@chakra-ui/react';
+import { Box, ButtonGroup, Flex, Grid, Heading, IconButton, Image, Link, Text } from '@chakra-ui/react';
 import { FaBehance, FaGithub, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 const About = (props:any) => {
@@ -51,6 +51,20 @@ const About = (props:any) => {
               interact with the gallery, have fun and really spend the time to reflect on
               what you hear in the music!
             </Text>
+            <Heading
+              fontWeight="normal"
+              size="sm"
+              pt="2rem"
+              pb="1rem">
+              If you'd like to support me, I'd really appreciate if you decided to {}
+              <Link
+                fontWeight="medium"
+                href='https://www.buymeacoffee.com/joshenz'
+                color='brand.green'
+                isExternal>
+                buy me a coffee! ☕
+              </Link>
+            </Heading>
             <ButtonGroup mt='2rem' spacing={5} variant="ghost">
             <IconButton
               as="a"

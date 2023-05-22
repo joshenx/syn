@@ -8,7 +8,8 @@ import {
   TabList,
   TabPanels,
   Tab,
-  TabPanel
+  TabPanel,
+  Link
 } from "@chakra-ui/react"
 import { ScorePDFViewer } from '../ScorePDFViewer/ScorePDFViewer'
 import { SongData } from "../SongSection/SongSection"
@@ -86,6 +87,20 @@ export const SongInfo = ({songData}:{songData:SongData | null}) => {
               >
                 {songData?.special_notes}
               </Text>
+              <Heading
+                fontWeight="normal"
+                size="sm"
+                pt="2rem"
+                pb="1rem">
+                Did you enjoy this experience? Consider {}
+                <Link
+                  fontWeight="medium"
+                  href='https://www.buymeacoffee.com/joshenz'
+                  color='brand.green'
+                  isExternal>
+                  buying me a coffee! ☕
+                </Link>
+              </Heading>
             </TabPanel>
             <TabPanel>
               <Text

@@ -1,3 +1,5 @@
+import './style.css';
+
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import {
   Avatar,
@@ -52,6 +54,7 @@ const NavBar = () => {
         as="header"
         position="fixed"
         top="0"
+        className='gradient-header'
         backdropFilter="contrast(98%) blur(5px)"
         boxShadow="0px 0px 30px 0px rgba(0, 0, 0, 0.15)"
         p="0.5rem 1rem"
