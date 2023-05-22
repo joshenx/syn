@@ -16,7 +16,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/bad-words": "^3.0.1",
     "@types/jest": "^28.1.8",
-    "@types/node": "^12.20.55",
+    "@types/node": "^20.2.3",
     "@types/react": "^18.0.24",
     "@types/react-audio-player": "^0.13.0",
     "@types/react-color": "^3.0.6",
