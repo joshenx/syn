@@ -91,7 +91,8 @@ export const SongInfo = ({songData}:{songData:SongData | null}) => {
                 fontWeight="normal"
                 size="sm"
                 pt="2rem"
-                pb="1rem">
+                pb="1rem"
+                lineHeight="2rem">
                 Did you enjoy this experience? Consider {}
                 <Link
                   fontWeight="medium"

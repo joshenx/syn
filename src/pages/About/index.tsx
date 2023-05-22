@@ -55,7 +55,8 @@ const About = (props:any) => {
               fontWeight="normal"
               size="sm"
               pt="2rem"
-              pb="1rem">
+              pb="1rem"
+              lineHeight="2rem">
               If you'd like to support me, I'd really appreciate if you decided to {}
               <Link
                 fontWeight="medium"
