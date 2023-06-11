@@ -1,59 +1,198 @@
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<a name="readme-top"></a>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-Runs the app in the development mode.<br /> Open
-[http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/joshenx/syn">
+    <img src="images/faviconPng.png" alt="Logo" width="80" height="80">
+  </a>
 
-The page will reload if you make edits.<br /> You will also see any lint errors
-in the console.
+  <h3 align="center">SYN</h3>
 
-### `npm test`
+  <p align="center">
+    Listen to Colours.
+    <br />
+    <br />
+    <a href="https://github.com/joshenx/syn">View Demo</a>
+    ·
+    <a href="https://github.com/joshenx/syn/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/joshenx/syn/issues">Request Feature</a>
+  </p>
+</div>
 
-Launches the test runner in the interactive watch mode.<br /> See the section
-about
-[running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br /> It correctly bundles
-React in production mode and optimizes the build for the best performance.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-The build is minified and the filenames include the hashes.<br /> Your app is
-ready to be deployed!
 
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
 
-### `npm run eject`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+What colour does a violin sound like? SYN is a Vercel website (ReactJS, ts, Supabase, Chakra) for people to vote on what colour comes to their mind when they listen to some classical music pieces, which then creatively displays the data through gradients and timestamps.
 
-If you aren’t satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn’t feel obligated to use this
-feature. However we understand that this tool wouldn’t be useful if you couldn’t
-customize it when you are ready for it.
 
-## Learn More
+### Built With
 
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* [![React][React.js]][React-url]
+* [![Chakra UI][Chakra-ui]][Chakra-url]
+* [![Supabase][Supabase-icon]][Supabase-url]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/joshenx/syn.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run your dev environment
+   ```sh
+   npm start
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Add main features
+- [x] Add about me page
+- [x] Add toggle/hide gradient feature
+- [ ] Add metronome
+- [ ] Display list of comments
+- [x] Add readme
+
+See the [open issues](https://github.com/joshenx/syn/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Joshen Lim - [@joshenz](linkedin.com/in/joshenxlim)
+
+Project Link: [https://github.com/joshenx/syn](https://github.com/joshenx/syn)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* [Choose an Open Source License](https://choosealicense.com)
+* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
+* [Malven's Grid Cheatsheet](https://grid.malven.co/)
+* [Img Shields](https://shields.io)
+* [GitHub Pages](https://pages.github.com)
+* [Font Awesome](https://fontawesome.com)
+* [React Icons](https://react-icons.github.io/react-icons/search)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Chakra-ui]: https://shields.io/badge/chakra--ui-black?logo=chakraui&style=for-the-badge
+[Chakra-url]: https://chakra-ui.com/
+[Supabase-icon]: https://shields.io/badge/supabase-black?logo=supabase&style=for-the-badge
+[Supabase-url]: https://supabase.com/
