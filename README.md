@@ -22,9 +22,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/joshenx/syn">
+  <!-- <a href="https://github.com/joshenx/syn">
     <img src="images/faviconPng.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
   <h3 align="center">SYN</h3>
 
@@ -32,7 +32,7 @@
     Listen to Colours.
     <br />
     <br />
-    <a href="https://github.com/joshenx/syn">View Demo</a>
+    <a href="https://syn.vercel.app">View Demo</a>
     ·
     <a href="https://github.com/joshenx/syn/issues">Report Bug</a>
     ·
