@@ -1,37 +1,37 @@
 .rhap_container {
-  box-shadow: none;
-  background-color: rgba(0,0,0,0);
-  padding: 0px;
+	box-shadow: none;
+	background-color: rgba(0, 0, 0, 0);
+	padding: 0px;
 }
 
 .rhap_controls-section {
-  justify-content: space-evenly;
+	justify-content: space-evenly;
 }
 
 #rhap_current-time {
-  color: var(--chakra-colors-chakra-body-text);
+	color: var(--chakra-colors-chakra-body-text);
 }
 
 .rhap_total-time {
-  color: var(--chakra-colors-chakra-body-text);
+	color: var(--chakra-colors-chakra-body-text);
 }
 
 .rhap_progress-container {
-  margin: 0;
+	margin: 0;
 }
 
 .rhap_progress-bar {
-  width: 100%;
+	width: 100%;
 }
 
 .rhap_progress-filled {
-  background-color: var(--chakra-colors-brand-pink);
+	background-color: var(--chakra-colors-brand-pink);
 }
 
 .rhap_progress-indicator {
-  background-color: white;
-  border-width: 2px;
-  border-color: #dcdcdc;
-  border-radius: 6px;
-  box-shadow: 0px 0px 30px 0px whitesmoke;
+	background-color: white;
+	border-width: 2px;
+	border-color: #dcdcdc;
+	border-radius: 6px;
+	box-shadow: 0px 0px 30px 0px whitesmoke;
 }
