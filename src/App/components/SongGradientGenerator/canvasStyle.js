@@ -2,7 +2,7 @@ var canvasArr = document.querySelectorAll('canvas');
 var ctx = [];
 var i = canvasArr.length;
 while (i--) {
-	ctx[i] = canvasArr[i].getContext('2d');
+  ctx[i] = canvasArr[i].getContext('2d');
 }
 
 ctx[0].fillStyle = 'white';

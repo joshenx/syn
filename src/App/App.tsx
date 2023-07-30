@@ -11,15 +11,15 @@ import Footer from './components/Footer';
 import theme from './theme';
 
 export const App = () => (
-	<ChakraProvider theme={theme}>
-		<BrowserRouter>
-			<Box fontSize="md">
-				<NavBar />
-				<Box mt="20">
-					<Router />
-				</Box>
-				<Footer />
-			</Box>
-		</BrowserRouter>
-	</ChakraProvider>
+  <ChakraProvider theme={theme}>
+    <BrowserRouter>
+      <Box fontSize="md">
+        <NavBar />
+        <Box mt="20">
+          <Router />
+        </Box>
+        <Footer />
+      </Box>
+    </BrowserRouter>
+  </ChakraProvider>
 );

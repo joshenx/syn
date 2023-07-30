@@ -1,67 +1,67 @@
 {
-	"name": "syn",
-	"version": "0.1.0",
-	"private": true,
-	"dependencies": {
-		"@chakra-ui/icons": "^2.0.11",
-		"@chakra-ui/react": "^2.6.1",
-		"@emotion/react": "^11",
-		"@emotion/styled": "^11",
-		"@fontsource/inter": "^4.5.14",
-		"@rollup/plugin-node-resolve": "^15.0.1",
-		"@supabase/supabase-js": "^2.0.5",
-		"@syncfusion/ej2-react-inputs": "^20.3.50",
-		"@tanstack/react-query": "^4.29.19",
-		"@testing-library/jest-dom": "^5.16.5",
-		"@testing-library/react": "^13.4.0",
-		"@testing-library/user-event": "^14.4.3",
-		"@types/bad-words": "^3.0.1",
-		"@types/jest": "^28.1.8",
-		"@types/node": "^20.2.3",
-		"@types/react": "^18.0.24",
-		"@types/react-audio-player": "^0.13.0",
-		"@types/react-color": "^3.0.6",
-		"@types/react-dom": "^18.0.8",
-		"@types/react-pdf": "^5.7.3",
-		"@types/tinycolor2": "^1.4.3",
-		"@vitejs/plugin-react": "^2.2.0",
-		"bad-words": "^3.0.4",
-		"framer-motion": "^6",
-		"mesh-gradient.js": "^0.0.5",
-		"prettier": "^3.0.0",
-		"react": "^18.2.0",
-		"react-color": "^2.19.3",
-		"react-dom": "^18.2.0",
-		"react-h5-audio-player": "^3.8.6",
-		"react-icons": "^3.11.0",
-		"react-pdf": "^5.7.2",
-		"react-router-dom": "^6.4.3",
-		"tinycolor2": "^1.4.2",
-		"tone": "^14.7.77",
-		"typescript": "^4.8.4",
-		"vite": "^3.2.3",
-		"vite-plugin-svgr": "^2.2.2",
-		"vite-tsconfig-paths": "^3.5.2",
-		"web-vitals": "^2.1.4"
-	},
-	"scripts": {
-		"start": "vite",
-		"build": "tsc && vite build",
-		"serve": "vite preview"
-	},
-	"eslintConfig": {
-		"extends": "react-app"
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	}
+  "name": "syn",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.11",
+    "@chakra-ui/react": "^2.6.1",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@fontsource/inter": "^4.5.14",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@supabase/supabase-js": "^2.0.5",
+    "@syncfusion/ej2-react-inputs": "^20.3.50",
+    "@tanstack/react-query": "^4.29.19",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/bad-words": "^3.0.1",
+    "@types/jest": "^28.1.8",
+    "@types/node": "^20.2.3",
+    "@types/react": "^18.0.24",
+    "@types/react-audio-player": "^0.13.0",
+    "@types/react-color": "^3.0.6",
+    "@types/react-dom": "^18.0.8",
+    "@types/react-pdf": "^5.7.3",
+    "@types/tinycolor2": "^1.4.3",
+    "@vitejs/plugin-react": "^2.2.0",
+    "bad-words": "^3.0.4",
+    "framer-motion": "^6",
+    "mesh-gradient.js": "^0.0.5",
+    "prettier": "^3.0.0",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0",
+    "react-h5-audio-player": "^3.8.6",
+    "react-icons": "^3.11.0",
+    "react-pdf": "^5.7.2",
+    "react-router-dom": "^6.4.3",
+    "tinycolor2": "^1.4.2",
+    "tone": "^14.7.77",
+    "typescript": "^4.8.4",
+    "vite": "^3.2.3",
+    "vite-plugin-svgr": "^2.2.2",
+    "vite-tsconfig-paths": "^3.5.2",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
