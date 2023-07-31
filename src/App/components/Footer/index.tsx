@@ -49,6 +49,7 @@ const Footer = () => {
             <Link href={'/'}>Gallery</Link>
             <Text color="disabled">Metronome (Coming Soon!)</Text>
             <Link href={'/about'}>About Me</Link>
+            <Link href={'/just'}>Just Training</Link>
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Contribute</ListHeader>
