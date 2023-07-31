@@ -20,23 +20,28 @@ import {
   SliderMark,
 } from '@chakra-ui/react';
 import * as Tone from 'tone';
+import { Frequency } from 'tone/build/esm/core/type/Units';
 
 const synth = new Tone.Synth().toMaster();
 const userSynth = new Tone.Synth().toMaster();
 const answerSynth = new Tone.Synth().toMaster();
 
-const INTERVALS = {
-  3: { name: 'Minor 3rd', ratio: 6 / 5 },
-  4: { name: 'Major 3rd', ratio: 5 / 4 },
-  7: { name: 'Perfect 5th', ratio: 3 / 2 },
-  10: { name: 'Minor 7th', ratio: 9 / 5 },
-  // 11: { name: 'Major 7th', ratio: 15 / 8 },
-  12: { name: 'Perfect Octave', ratio: 2 },
+interface Interval {
+  name: string;
+  ratio: number;
+}
+
+const INTERVALS: { [key: string]: Interval } = {
+  '3': { name: 'Minor 3rd', ratio: 6 / 5 },
+  '4': { name: 'Major 3rd', ratio: 5 / 4 },
+  '7': { name: 'Perfect 5th', ratio: 3 / 2 },
+  '10': { name: 'Minor 7th', ratio: 9 / 5 },
+  '12': { name: 'Perfect Octave', ratio: 2 },
 };
 
 const volume = 0.4;
 
-const getRandomInterval = (object) => {
+const getRandomInterval = (object: { [key: string]: Interval }) => {
   var keys = Object.keys(object);
   return keys[Math.floor(keys.length * Math.random())];
 };
@@ -98,7 +103,7 @@ const About = (props: any) => {
     generateNewQuestion();
   };
 
-  const playUserFreq = (freq) => {
+  const playUserFreq = (freq: Frequency) => {
     userSynth.triggerAttack(freq, '0', volume);
   };
 
@@ -145,7 +150,7 @@ const About = (props: any) => {
     console.log(`IsUserPlaying set to: ${isUserPlaying}`);
   };
 
-  const handleUserFreqChange = (val) => {
+  const handleUserFreqChange = (val: number) => {
     setUserFreq(val);
     if (isUserPlaying) {
       userSynth.triggerRelease();
