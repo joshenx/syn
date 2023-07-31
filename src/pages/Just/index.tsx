@@ -221,9 +221,11 @@ const About = (props: any) => {
             aria-label="slider-ex-2"
             colorScheme="pink"
             defaultValue={currFreq}
+            value={userFreq}
             min={currFreq}
             max={answerFreq + 200}
             onChange={(val) => handleUserFreqChange(val)}
+            onChangeEnd={(val) => handleUserFreqChange(val)}
           >
             <SliderMark
               value={currFreq}
